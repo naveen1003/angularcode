@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: angulardevopsdashboard
-        image: jyonarra/angularjs:latest
+        image: docker1003/angulardashboard:latest
         ports:
         - name: angular-port
           containerPort: 4000
