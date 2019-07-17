@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: angulardevopsdashboard
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angulardevopsdashboard
+    spec:
+      containers:
+      - name: angulardevopsdashboard
+        image: jyonarra/angularjs:latest
+        ports:
+        - name: angular-port
+          containerPort: 4000
