@@ -1,0 +1,17 @@
+<div class="container" style="text-align: center; width: 100%">
+
+  <div class="row" style="width: 100%">
+
+    <div [ngClass]="getColClass()"
+    *ngFor="let env of envList"
+    (click)="selectEnv(env)">
+      <h6 
+      style="cursor: pointer; height: 28px; padding-top: 7px; border: 1px solid; border-radius: 10px;"
+      [ngStyle]="{
+        'background-color': env === selectedEnv ? 'steelblue' : 'gainsboro',
+        'color': env === selectedEnv ? 'white' : 'darkslategray'}">
+        <strong>{{ env }}</strong></h6>
+    </div>
+    
+  </div>
+</div>

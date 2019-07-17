@@ -1,0 +1,145 @@
+<div class="container" style="width: 100%; border: 1px solid #ddd; margin-top: 10px">
+  <h4 style="color: dimgray; text-align: center; padding-bottom: 15px;"><strong><i>VSTS Projects</i></strong></h4>
+
+  <!-- Industries -->
+  <div class="row" style="padding-bottom: 5px; padding-left: 5px;">
+    <p><strong>Pods: </strong>
+      <span (click)="toggleIndustryDropdown(!industryDropdownState)" style="cursor: pointer; border: 1px solid #ddd; border-radius: 5px; padding-left: 3px; padding-right: 3px; margin-left: 34px; background-color: steelblue; color: white;">
+        {{ selectedIndustry }} <span class="caret"></span></span></p>
+    <div class="row" *ngIf="industryDropdownState" style="position: absolute; z-index: 1; margin-top: -10px;"
+      (mouseleave)="mouseLeave()">
+
+      <div class="row"
+        *ngFor="let industry of industryList; let i = index;"
+        style="text-align: left;
+          width: 100%;
+          margin-left: 65px;
+          background-color: white;
+          border: 1px solid #ddd;
+          cursor: pointer;"
+        [ngStyle]="{ 'border-top': i == 0 ? '1px solid #ddd':'0px' }">
+        <p style="padding-left: 10px; margin-bottom: 0px;" [ngStyle]="{ 'background-color': selectIndustryMouseoverIndex == i ? 'steelblue':'white',
+        'color': selectIndustryMouseoverIndex == i ? 'white':'black' }"
+          (click)="selectIndustry(industry)" (mouseover)="selectIndustryMouseover(i)">{{ industry }}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Instances -->
+  <div class="row" style="padding-bottom: 5px; padding-left: 5px;">
+    <p><strong>Orgs: </strong>
+      <span (click)="toggleInstanceDropdown(!instanceDropdownState)" style="cursor: pointer; border: 1px solid #ddd; border-radius: 5px;  margin-left: 34px;padding-left: 3px; padding-right: 3px;"
+        [ngStyle]="{ 'background-color' : selectedIndustry == 'None' ? 'gainsboro' : 'steelblue',
+        'color': selectedIndustry == 'None' ? 'black' : 'white' }">
+        {{ selectedInstance }} <span class="caret"></span></span></p>
+
+    <div class="row" *ngIf="instanceDropdownState" style="position: absolute; z-index: 1; margin-top: -10px;"
+      (mouseleave)="mouseLeave()">
+
+      <div class="row"
+        *ngFor="let instance of instanceList; let i = index;"
+        style="text-align: left;
+              width: 100%;
+              margin-left: 65px;
+              background-color: white;
+              border: 1px solid #ddd;
+              cursor: pointer;"
+        [ngStyle]="{ 'border-top': i == 0 ? '1px solid #ddd':'0px' }">
+        <p style="padding-left: 10px; margin-bottom: 0px;" [ngStyle]="{ 'background-color': selectInstanceMouseoverIndex == i ? 'steelblue':'white',
+        'color': selectInstanceMouseoverIndex == i ? 'white':'black' }"
+          (click)="selectInstance(instance)" (mouseover)="selectInstanceMouseover(i)">{{ instance }}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VSTS Project (AppName) -->
+  <div class="row" style="padding-bottom: 5px; padding-left: 5px;">
+    <p><strong>Vsts_App: </strong>
+      <span (click)="toggleAppDropdown(!appDropDownState)" style="cursor: pointer; border: 1px solid #ddd; border-radius: 5px; margin-left: 2px;padding-left: 3px; padding-right: 3px;"
+        [ngStyle]="{ 'background-color' : (selectedInstance == 'None' && selectedInstance == 'None') ? 'gainsboro' : 'steelblue',
+      'color': selectedInstance == 'None' ? 'black' : 'white' }">
+        {{ selectedApp }} <span class="caret"></span></span></p>
+
+    <div class="row" *ngIf="appDropDownState" style="position: absolute; z-index: 1; margin-top: -10px;" (mouseleave)="mouseLeave()">
+
+      <div class="row"
+        *ngFor="let app of appList; let i = index;"
+        style="text-align: left;
+            width: 100%;
+            margin-left: 65px;
+            background-color: white;
+            border: 1px solid #ddd;
+            cursor: pointer;"
+        [ngStyle]="{ 'border-top': i == 0 ? '1px solid #ddd':'0px' }">
+        <p style="padding-left: 10px; margin-bottom: 0px;" [ngStyle]="{ 'background-color': selectAppMouseoverIndex == i ? 'steelblue':'white',
+      'color': selectAppMouseoverIndex == i ? 'white':'black' }"
+          (click)="selectApp(app)" (mouseover)="selectAppMouseover(i)">{{ app.split('--')[2] }}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!--  Project for Selected App -->
+  <div class="row" style="padding-bottom: 5px; padding-left: 5px;">
+    <p><strong>Project: </strong>
+      <span (click)="toggleProjectDropdown(!projDropdownState)" style="cursor: pointer; border: 1px solid #ddd; border-radius: 5px; margin-left: 17px;padding-left: 3px; padding-right: 3px;"
+        [ngStyle]="{ 'background-color' : selectedApp == 'None' ? 'gainsboro' : 'steelblue',
+      'color': selectedApp == 'None' ? 'black' : 'white' }">
+        {{ selectedProject }} <span class="caret"></span></span></p>
+
+    <div class="row" *ngIf="projDropdownState" style="position: absolute; z-index: 1; margin-top: -10px;" (mouseleave)="mouseLeave()">
+
+      <div class="row"
+        *ngFor="let project of projectList; let i = index;"
+        style="text-align: left;
+            width: 100%;
+            margin-left: 65px;
+            background-color: white;
+            border: 1px solid #ddd;
+            cursor: pointer;"
+        [ngStyle]="{ 'border-top': i == 0 ? '1px solid #ddd':'0px' }">
+        <p style="padding-left: 10px; margin-bottom: 0px;" [ngStyle]="{ 'background-color': selectProjectMouseoverIndex == i ? 'steelblue':'white',
+      'color': selectProjectMouseoverIndex == i ? 'white':'black' }"
+          (click)="selectProject(project)" (mouseover)="selectProjectMouseover(i)">{{project}}</p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--Sprint List for Specific Project-->
+  <div class="row" style="padding-bottom: 5px; padding-left: 5px;">
+    <p><strong>Sprint: </strong>
+      <span (click)="toggleSprintDropdown(!sprintDropdownState)" style="cursor: pointer; border: 1px solid #ddd; border-radius: 5px;margin-left: 23px; padding-left: 3px; padding-right: 3px;"
+        [ngStyle]="{ 'background-color' : selectedProject == 'None' ? 'gainsboro' : 'steelblue',
+    'color': selectedProject == 'None' ? 'black' : 'white' }">
+        {{ selectedSprint }} <span class="caret"></span></span></p>
+
+    <div class="row" *ngIf="sprintDropdownState" style="position: absolute; z-index: 1; margin-top: -10px;"
+      (mouseleave)="mouseLeave()">
+
+      <div class="row"
+        *ngFor="let sprint of sprintList; let i = index;"
+        style="text-align: left;
+          width: 100%;
+          margin-left: 65px;
+          background-color: white;
+          border: 1px solid #ddd;
+          cursor: pointer;"
+        [ngStyle]="{ 'border-top': i == 0 ? '1px solid #ddd':'0px' }">
+        <p style="padding-left: 10px; margin-bottom: 0px;" [ngStyle]="{ 'background-color': selectSprintMouseoverIndex == i ? 'steelblue':'white',
+    'color': selectSprintMouseoverIndex == i ? 'white':'black' }"
+          (click)="selectSprint(sprint)" (mouseover)="selectSprintMouseover(i)">{{sprint}}</p>
+      </div>
+
+    </div>
+    <p style="padding-top: 5px;"><strong>Start Date:</strong> {{sprintStartDate | date: 'dd/MM/yyyy'}}<br>
+    <p style="padding-top: 5px;"><strong>End Date:</strong> {{sprintEndDate | date: 'dd/MM/yyyy'}}
+
+
+  </div>
+</div>
+
+<app-environment></app-environment>

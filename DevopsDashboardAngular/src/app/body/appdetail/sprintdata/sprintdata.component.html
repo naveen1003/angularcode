@@ -1,0 +1,241 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h4 style="color: white;
+    background-color:steelblue;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;">
+      <strong>Sprint Status & Bug Data</strong></h4>
+  </div>
+</div>
+
+<div class="container" style="width: 100%; border: 1px solid #ddd">
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 inline" style="text-align: left; padding-top: 10px;">
+      <p style="display: inline-block"><strong>Project:</strong></p>
+      <div class="dropdown" style="display: inline-block; padding-left: 10px;">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+          style="border-radius: 10px; padding-top: 2px; padding-bottom: 2px;">{{ selectedProject }}
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let project of projectList; let i = index;" (click)="selectProject(project)"><a
+              href="#">{{ project }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: right; padding-top: 10px;">
+      <p style="display: inline-block"><strong>Sprint:</strong></p>
+      <div class="dropdown" style="display: inline-block; padding-left: 10px;">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+          style="border-radius: 10px; padding-top: 2px; padding-bottom: 2px;">{{ selectedSprint }}
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let sprint of sprintList; let i = index;" (click)="selectSprint(sprint)"><a
+              href="#">{{ sprint }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" style="padding-top: 10px;">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: left;">
+      <p><strong>Sprint Start Date: </strong>
+        {{ sprintStartDate.toString().split('T')[0]  }}</p>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+      <p><strong>Sprint End Date: </strong>
+        {{ sprintEndDate.toString().split('T')[0] }}</p>
+    </div>
+  </div>
+
+  <div class="row" style="width:100%; padding-bottom: 10px;">
+
+    <!-- User Story - Status -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div style="background-color: lightsteelblue; border-radius: 20px;">
+        <h5 style="padding-top: 10px;"><strong>User Story - Status</strong></h5>
+
+        <div class="row">
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">New</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: chocolate"><strong>{{storynewstate}}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Closed</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: red"><strong>{{storyclosedstate}}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Active</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: green"><strong>{{storyactivestate}}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Total</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: brown"><strong>{{totalstories}}</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- User Story - Tag -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div style="background-color: lightsteelblue; border-radius: 20px;">
+        <h5 style="padding-top: 10px;"><strong>User Story - Tag</strong></h5>
+
+        <div class="row">
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">DEV</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: chocolate"><strong>{{ workItemTagObject["DEV"] }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">QA</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: red"><strong>{{ workItemTagObject["QA"] }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">UAT</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: green"><strong>{{ workItemTagObject["UAT"] }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">PROD</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: brown"><strong>{{ workItemTagObject["PROD"] }}</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Defects - Status -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div style="background-color: lightsteelblue; border-radius: 20px;">
+        <h5 style="padding-top: 10px;"><strong>Defects - Status</strong></h5>
+
+        <div class="row">
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">New</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: chocolate"><strong>{{ defectnewstate }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Closed</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: red"><strong>{{ defectclosedstate }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Active</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: green"><strong>{{ defectactivestate }}</strong></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p style="text-align: left; padding-left: 20px;">Total</p>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <p>:</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p style="text-align: left; color: brown"><strong>{{ totaldefects }}</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

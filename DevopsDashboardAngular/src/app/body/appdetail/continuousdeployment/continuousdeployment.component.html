@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  
+    <h4 style="color: white;
+    background-color:steelblue;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;">
+      <strong>Continuous Deployment</strong></h4>
+  </div>
+</div>
+
+<table class="table table-bordered">
+
+  <thead>
+    <tr style="background-color: steelblue; color: white;">
+      <th style="text-align: center">S.No.</th>
+      <th style="text-align: center">Tag Deployed</th>
+      <th style="text-align: center">Approved By</th>
+      <th style="text-align: center">Deployed Time</th>
+      <th style="text-align: center">Deployment Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+    *ngFor="let cddata of cdDataList">
+      <td>{{ cdDataList.indexOf(cddata) + 1 }}</td>
+      <td>{{ cddata.tagDeployed }}</td>
+      <td>{{ cddata.ApprovedBy }}</td>
+      <td>{{ cddata.DeployedTime.split('T')[0] }} {{ cddata.DeployedTime.split('T')[1].split(':')[0] }}:{{ cddata.DeployedTime.split('T')[1].split(':')[1] }}</td>
+      <td style="color: white;"
+      [ngStyle]="{
+        'background-color': cddata.DeployementStatus === 'Deployed Successfully' ? 'green' : 'red'}">
+        {{ getDeploymentStatus(cddata.DeployementStatus) }}</td>
+    </tr>
+  </tbody>
+
+</table>

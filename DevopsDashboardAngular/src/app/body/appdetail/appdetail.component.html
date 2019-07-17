@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-4" style="text-align: left;">
+            <h4 style="color: dimgray"><strong><i>POD: </i>{{ selectedApp.split('--')[0] }}</strong></h4>
+        </div>
+        <div class="col-md-4" style="text-align: center;">
+            <h4 style="color: dimgray"><strong><i>ORG:</i> {{ selectedApp.split('--')[1] }}</strong></h4>
+        </div>
+        <div class="col-md-4" style="text-align: right;">
+            <h4 style="color: dimgray"><strong><i>VSTS APP: </i>{{ selectedApp.split('--')[2] }}</strong></h4>
+        </div>
+    </div>
+</div>
+ <app-sprintdata></app-sprintdata>
+<br/>
+
+<app-environment></app-environment>
+
+<app-continuousintegration></app-continuousintegration>
+<br/>
+<app-continuousdeployment></app-continuousdeployment>

@@ -1,0 +1,7 @@
+nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #337ab7;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #337ab7;
+}

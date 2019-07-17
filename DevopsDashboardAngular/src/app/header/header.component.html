@@ -1,0 +1,37 @@
+<nav class="navbar navbar-inverse" style="background-color: steelblue; border-color: steelblue; margin-bottom: 0px;">
+  <div class="container-fluid">
+    <div class="navbar-header" style="padding-right: 10px;">
+      <a class="navbar-brand" style="color: white;"><strong style="font-size: larger;">Devops Dashboard</strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;"><strong style="font-size: medium;">POD</strong>
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let industry of industryList; let i = index;"
+          (click)="selectIndustry(industry)"><a href="#">{{ industry }}</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;"><strong style="font-size: medium;">ORG</strong>
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let instance of instanceList; let i = index;"
+          (click)="selectInstance(instance)"><a href="#">{{ instance }}</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;"><strong style="font-size: medium;">VSTS APP</strong>
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let app of appList; let i = index;"
+          (click)="selectApp(app)"><a href="#">{{ app.split('--')[2] }}</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
